@@ -1,0 +1,37 @@
+<mat-card 
+  class="room-card" 
+  [class.is-occupied]="!room.isAvailable"
+  [routerLink]="['/rooms', room.id]"
+>
+  
+  <div class="image-wrapper">
+    <img 
+      mat-card-image 
+      [src]="room.image" 
+      [alt]="room.name"
+      loading="lazy"
+    >
+    <span class="status-badge">
+      {{ room.isAvailable ? 'Свободна' : 'Занята' }}
+    </span>
+  </div>
+  
+  <mat-card-content>
+    <h3 class="room-title">
+      {{ room.name }}
+    </h3>
+    <p class="room-info">
+      Вместимость: {{ room.capacity }} чел.
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions (click)="$event.stopPropagation()">
+    <app-pill-button 
+      class="action-button" 
+      (btnClick)="toggle.emit(room.id)"
+    >
+      {{ room.isAvailable ? 'Забронировать' : 'Освободить' }}
+    </app-pill-button>
+  </mat-card-actions>
+
+</mat-card>

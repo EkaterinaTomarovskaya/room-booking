@@ -1,0 +1,120 @@
+<article 
+  *ngIf="room$ | async as room" 
+  class="details-container"
+>
+  
+  <header class="room-hero">
+    <div class="header-nav">
+      <button 
+        mat-icon-button 
+        routerLink="/rooms" 
+        aria-label="Назад"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h1 class="room-hero__title">
+        {{ room.name }}
+      </h1>
+    </div>
+    
+    <div class="room-hero__frame">
+      <img 
+        [src]="room.image" 
+        [alt]="room.name" 
+        loading="lazy"
+      >
+    </div>
+  </header>
+
+  <div class="room-grid">
+    <main class="room-info">
+      
+      <section class="room-badges">
+        <div class="badge-item">
+          <mat-icon>groups</mat-icon>
+          <span>До {{ room.capacity }} человек</span>
+        </div>
+
+        <div class="badge-item badge-item--premium">
+          <mat-icon>verified</mat-icon>
+          <span>Premium Space</span>
+        </div>
+      </section>
+
+      <section class="room-section">
+        <h2 class="room-section__title">О пространстве</h2>
+        <p class="room-section__text">
+          {{ room.description }}
+        </p>
+      </section>
+
+      <section class="room-section">
+        <h2 class="room-section__title">Что включено</h2>
+        <div class="amenities-grid">
+          <div 
+            *ngFor="let feat of room.features" 
+            class="amenity-item"
+          >
+            <mat-icon>{{ feat }}</mat-icon>
+            <span class="amenity-item__name">
+              {{ getFeatureName(feat) }}
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="room-sidebar">
+      <div class="booking-card">
+        <h3 class="booking-card__title">Забронировать</h3>
+        
+        <form 
+          [formGroup]="bookingForm" 
+          (ngSubmit)="onBook(room.id)" 
+          class="booking-form"
+        >
+          <div class="booking-form__field">
+            <label class="field-label">Дата визита</label>
+            <mat-form-field appearance="outline" class="w-full">
+              <input 
+                matInput 
+                formControlName="date"
+                [matDatepicker]="picker"
+              >
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="booking-form__field">
+            <label class="field-label">Временной интервал</label>
+            <div class="time-inputs">
+              <mat-form-field appearance="outline">
+                <mat-label>С</mat-label>
+                <input matInput type="time" formControlName="startTime">
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline">
+                <mat-label>До</mat-label>
+                <input matInput type="time" formControlName="endTime">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <button 
+            mat-flat-button 
+            type="submit"
+            class="booking-submit" 
+            [disabled]="bookingForm.invalid"
+          >
+            Подтвердить бронирование
+          </button>
+        </form>
+        
+        <footer class="booking-footer">
+          <p>Отмена бронирования возможна не позднее чем за 2 часа до начала.</p>
+        </footer>
+      </div>
+    </aside>
+  </div>
+</article>

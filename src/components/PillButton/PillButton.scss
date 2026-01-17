@@ -1,0 +1,27 @@
+@use '../../theme/colors' as c;
+
+.pill-btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: c.$white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &:disabled {
+        background-color: c.$background;
+        cursor: not-allowed;
+    }
+}

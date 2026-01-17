@@ -1,0 +1,41 @@
+@use '../theme/colors' as c;
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: c.$background;
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.room-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: c.$white;
+    transition: transform c.$transition-speed ease;
+
+    img {
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
+.available {
+    color: c.$available;
+    font-weight: bold;
+}
+
+.occupied {
+    color: c.$occupied;
+    font-weight: bold;
+}
+
+mat-toolbar {
+    gap: 10px;
+}

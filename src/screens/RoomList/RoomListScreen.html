@@ -1,0 +1,56 @@
+<div class="screen-container">
+  <h1>Available Rooms</h1>
+
+  <div class="grid">
+    <mat-card 
+      *ngFor="let room of rooms$ | async" 
+      class="room-card"
+    >
+      
+      <div 
+        class="image-wrapper" 
+        [routerLink]="['/rooms', room.id]"
+      >
+        <img 
+          class="room-img"
+          [src]="room.image" 
+          [alt]="room.name"
+        >
+  
+        <div 
+          *ngIf="!room.isAvailable" 
+          class="occupied-overlay"
+        >
+          <div *ngIf="room.bookedDate" class="status-row">
+            <mat-icon>calendar_today</mat-icon>
+            <span>{{ room.bookedDate }}</span>
+          </div>
+
+          <div *ngIf="room.bookingPeriod" class="status-row">
+            <mat-icon>access_time</mat-icon>
+            <span>{{ room.bookingPeriod }}</span>
+          </div>
+        </div>
+      </div>
+
+      <mat-card-content [routerLink]="['/rooms', room.id]">
+        <h3>{{ room.name }}</h3>
+        <p>Вместимость: {{ room.capacity }} чел.</p>
+        
+        <span [class]="room.isAvailable ? 'status-free' : 'status-busy'">
+          {{ room.isAvailable ? 'Свободна' : 'Занята' }}
+        </span>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <app-pill-button 
+          [color]="room.isAvailable ? '#4caf50' : '#f44336'"
+          (btnClick)="onToggleRoom(room, $event)"
+        > 
+          {{ room.isAvailable ? 'Забронировать' : 'Отмена' }}
+        </app-pill-button>
+      </mat-card-actions>
+      
+    </mat-card>
+  </div>
+</div>

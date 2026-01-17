@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+    selector: 'app-root',
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        MatToolbarModule,
+        MatIconModule
+    ],
+    templateUrl: './app.html',
+    styleUrl: './app.scss'
 })
-export class App {
-  protected readonly title = signal('room-booking');
+export class AppComponent {
+    title = 'Room Booking System';
 }

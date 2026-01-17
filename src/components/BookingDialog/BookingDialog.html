@@ -1,0 +1,143 @@
+<h2 mat-dialog-title>
+  Бронирование: {{ data.roomName }}
+</h2>
+
+<mat-dialog-content>
+  <form 
+    [formGroup]="form" 
+    class="booking-form"
+  >
+    
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Выберите дату</mat-label>
+      <input 
+        matInput 
+        formControlName="date"
+        [matDatepicker]="picker" 
+        [min]="minDate"
+      >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="time-selection-container">
+      
+      <div class="time-row">
+        <span class="time-label">Начало:</span>
+        <div class="selectors">
+          
+          <mat-form-field 
+            appearance="outline" 
+            (click)="tH1.openPanel()"
+          >
+            <input 
+              matInput 
+              #tH1="matAutocompleteTrigger"
+              formControlName="startHour" 
+              [matAutocomplete]="autoH"
+              style="text-align: center;"
+            >
+            <mat-icon matSuffix class="select-arrow">arrow_drop_down</mat-icon>
+            <mat-autocomplete #autoH="matAutocomplete">
+              <mat-option *ngFor="let h of hours" [value]="h">
+                {{ h }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <span class="colon">:</span>
+
+          <mat-form-field 
+            appearance="outline" 
+            (click)="tM1.openPanel()"
+          >
+            <input 
+              matInput 
+              #tM1="matAutocompleteTrigger"
+              formControlName="startMinute" 
+              [matAutocomplete]="autoM"
+            >
+            <mat-icon matSuffix class="select-arrow">arrow_drop_down</mat-icon>
+            <mat-autocomplete #autoM="matAutocomplete">
+              <mat-option *ngFor="let m of minutes" [value]="m">
+                {{ m }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="time-row">
+        <span class="time-label">Конец:</span>
+        <div class="selectors">
+          
+          <mat-form-field 
+            appearance="outline" 
+            (click)="tH2.openPanel()"
+          >
+            <input 
+              matInput 
+              #tH2="matAutocompleteTrigger"
+              formControlName="endHour" 
+              [matAutocomplete]="autoH2"
+            >
+            <mat-icon matSuffix class="select-arrow">arrow_drop_down</mat-icon>
+            <mat-autocomplete #autoH2="matAutocomplete">
+              <mat-option *ngFor="let h of hours" [value]="h">
+                {{ h }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <span class="colon">:</span>
+
+          <mat-form-field 
+            appearance="outline" 
+            (click)="tM2.openPanel()"
+          >
+            <input 
+              matInput 
+              #tM2="matAutocompleteTrigger"
+              formControlName="endMinute" 
+              [matAutocomplete]="autoM2"
+            >
+            <mat-icon matSuffix class="select-arrow">arrow_drop_down</mat-icon>
+            <mat-autocomplete #autoM2="matAutocomplete">
+              <mat-option *ngFor="let m of minutes" [value]="m">
+                {{ m }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </div>
+
+    <div 
+      *ngIf="form.hasError('timeInvalid')" 
+      class="error-msg"
+    >
+      Время завершения должно быть позже начала
+    </div>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button 
+    mat-button 
+    (click)="onCancel()"
+  >
+    Отмена
+  </button>
+  
+  <button 
+    mat-flat-button 
+    color="primary" 
+    [disabled]="form.invalid" 
+    (click)="onConfirm()"
+  >
+    Подтвердить
+  </button>
+</mat-dialog-actions>
