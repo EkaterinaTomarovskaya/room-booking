@@ -10,13 +10,13 @@ export const routes: Routes = [
         path: 'rooms',
         title: 'Список комнат',
         loadComponent: () =>
-            import('@screens/RoomList/RoomListScreen').then(m => m.RoomsListScreen)
+            import('@screens/RoomList/room-list-screen').then(m => m.RoomsListScreen)
     },
     {
         path: 'rooms/:id',
         title: 'Детали комнаты',
         loadComponent: () =>
-            import('@screens/RoomDetails/RoomDetailsScreen').then(m => m.RoomDetailsScreen)
+            import('@screens/RoomDetails/room-details-screen').then(m => m.RoomDetailsScreen)
     },
     //   // Страница ошибки (Wildcard route)
     //   {

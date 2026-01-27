@@ -31,8 +31,8 @@ export const timeRangeValidator: ValidatorFn = (control: AbstractControl): Valid
         MatButtonModule, MatDatepickerModule, MatFormFieldModule,
         MatInputModule, MatNativeDateModule, MatAutocompleteModule
     ],
-    templateUrl: './BookingDialog.html',
-    styleUrl: './BookingDialog.scss'
+    templateUrl: './booking-dialog.html',
+    styleUrl: './booking-dialog.scss'
 })
 export class BookingDialogComponent {
     public data = inject(MAT_DIALOG_DATA);

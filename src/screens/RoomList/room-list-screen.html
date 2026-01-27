@@ -1,0 +1,65 @@
+<section class="screen-container">
+  <h1 class="mat-headline-4">Available Rooms</h1>
+
+  <div class="grid">
+    @for (room of rooms$ | async; track room.id) {
+      <mat-card class="room-card" [class.room-card--occupied]="!room.isAvailable">
+        
+        <div class="room-card__main" [routerLink]="['/rooms', room.id]">
+          
+          <div class="image-wrapper">
+            <img mat-card-image 
+                 [src]="room.image" 
+                 [alt]="room.name"
+                 loading="lazy"
+                 class="room-img">
+
+            @if (!room.isAvailable) {
+              <div class="occupied-overlay">
+                <div class="status-group">
+                  @if (room.bookedDate) {
+                    <div class="status-row">
+                      <mat-icon>calendar_today</mat-icon>
+                      <span>{{ room.bookedDate }}</span>
+                    </div>
+                  }
+                  @if (room.bookingPeriod) {
+                    <div class="status-row">
+                      <mat-icon>access_time</mat-icon>
+                      <span>{{ room.bookingPeriod }}</span>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+
+          <mat-card-content>
+            <h3 class="room-title">{{ room.name }}</h3>
+            <p class="room-info">Вместимость: <strong>{{ room.capacity }}</strong> чел.</p>
+            
+            <span class="status-badge" 
+                  [class.status-badge--free]="room.isAvailable"
+                  [class.status-badge--busy]="!room.isAvailable">
+              {{ room.isAvailable ? 'Свободна' : 'Занята' }}
+            </span>
+          </mat-card-content>
+        </div>
+
+        <mat-card-actions align="end">
+          <app-pill-button 
+            [variant]="room.isAvailable ? 'success' : 'danger'"
+            (btnClick)="onToggleRoom(room, $event)"> 
+            {{ room.isAvailable ? 'Забронировать' : 'Отмена' }}
+          </app-pill-button>
+        </mat-card-actions>
+
+      </mat-card>
+    } @empty {
+      <div class="empty-state">
+        <mat-icon>search_off</mat-icon>
+        <p>Комнаты не найдены</p>
+      </div>
+    }
+  </div>
+</section>

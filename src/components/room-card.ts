@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { PillButtonComponent } from '@components/PillButton/PillButton';
+import { PillButtonComponent } from '@components/PillButton/pill-button';
 import { Room } from '@stores/store';
 import { RouterModule } from '@angular/router';
 
@@ -14,8 +14,8 @@ import { RouterModule } from '@angular/router';
         PillButtonComponent,
         RouterModule
     ],
-    templateUrl: './RoomCard.html',
-    styleUrl: './RoomCard.scss'
+    templateUrl: './room-card.html',
+    styleUrl: './room-card.scss'
 })
 export class RoomCardComponent {
     @Input({ required: true }) room!: Room;

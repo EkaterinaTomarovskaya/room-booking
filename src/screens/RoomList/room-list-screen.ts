@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { RoomStore, Room } from '@stores/store';
-import { PillButtonComponent } from '@components/PillButton/PillButton';
+import { PillButtonComponent } from '@components/PillButton/pill-button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { BookingDialogComponent } from '../../components/BookingDialog/BookingDialog';
+import { BookingDialogComponent } from '../../components/BookingDialog/booking-dialog';
 
 
 @Component({
@@ -19,8 +19,8 @@ import { BookingDialogComponent } from '../../components/BookingDialog/BookingDi
     PillButtonComponent,
     MatIconModule
   ],
-  templateUrl: './RoomListScreen.html',
-  styleUrl: './RoomListScreen.scss'
+  templateUrl: './room-list-screen.html',
+  styleUrl: './room-list-screen.scss'
 })
 export class RoomsListScreen {
   private store = inject(RoomStore);

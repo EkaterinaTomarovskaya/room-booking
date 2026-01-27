@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { switchMap, filter, map } from 'rxjs';
 import { RoomStore } from '@stores/store';
-import { timeRangeValidator } from '../../components/BookingDialog/BookingDialog';
+import { timeRangeValidator } from '../../components/BookingDialog/booking-dialog';
 
 @Component({
     selector: 'app-room-details-screen',
@@ -20,8 +20,8 @@ import { timeRangeValidator } from '../../components/BookingDialog/BookingDialog
         MatButtonModule, MatIconModule, MatDatepickerModule,
         MatFormFieldModule, MatInputModule, MatNativeDateModule
     ],
-    templateUrl: './RoomDetailsScreen.html',
-    styleUrl: './RoomDetailsScreen.scss'
+    templateUrl: './room-details-screen.html',
+    styleUrl: './room-details-screen.scss'
 })
 export class RoomDetailsScreen {
     private route = inject(ActivatedRoute);

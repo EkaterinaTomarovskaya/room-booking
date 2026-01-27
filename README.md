@@ -1,59 +1,40 @@
-# RoomBooking
+# Room Booking System 🏢🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
+Современное веб-приложение для управления бронированием переговорных комнат и офисных пространств, построенное на **Angular 18+** и **Angular Material 3**.
 
-## Development server
+## Key Features
 
-To start a local development server, run:
+* **Room Management:** Просмотр списка доступных комнат с динамическими статусами «Свободна» / «Занята».
+* **Interactive Booking:** Интеллектуальное модальное окно бронирования с выбором даты и временных интервалов.
+* **Detailed Space Overview:** Просмотр детальной информации о комнате: вместимость, описание и список доступных удобств (Wi-Fi, TV, Projector).
+* **Smart Overlays:** Визуальное отображение времени текущего бронирования прямо на карточке комнаты для занятых помещений.
 
-```bash
-ng serve
-```
+## Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Frontend:** Angular 18 (Standalone Components), RxJS.
+* **UI Library:** Angular Material 3 (MDC-based components).
 
-## Code scaffolding
+## Getting Started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1.  **Clone the repo:**
+    ```bash
+    git clone https://github.com/EkaterinaTomarovskaya/room-booking.git
+    ```
 
-```bash
-ng generate component component-name
-```
+2.  **Install dependencies:**
+    ```bash
+    cd room-booking
+    npm install
+    ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3.  **Run the app:**
+    ```bash
+    ng serve
+    ```
 
-```bash
-ng generate --help
-```
+4.  **Access the app:**
+    * Frontend: http://localhost:4200/
 
-## Building
+## Contact
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+По всем вопросам или предложениям пишите на почту: katya.tomarovskaya@gmail.com
